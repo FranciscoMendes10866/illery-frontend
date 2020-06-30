@@ -11,28 +11,28 @@
     </template>
 
     <template slot="end">
-      <b-navbar-item class="no-bg" tag="router-link" :to="{ path: '/Form' }">
+      <b-navbar-item class="no-bg" tag="router-link" :to="{ path: '/Form' }" v-show="isLoggedIn">
         <div class="buttons">
           <a class="button is-warning">
             <strong>Add event</strong>
           </a>
         </div>
       </b-navbar-item>
-      <b-navbar-item class="no-bg" tag="router-link" :to="{ path: '/SignUp' }">
+      <b-navbar-item class="no-bg" tag="router-link" :to="{ path: '/SignUp' }" v-show="!isLoggedIn">
         <div class="buttons">
           <a class="button is-primary">
             <strong>Sign up</strong>
           </a>
         </div>
       </b-navbar-item>
-      <b-navbar-item class="no-bg" tag="router-link" :to="{ path: '/Login' }">
+      <b-navbar-item class="no-bg" tag="router-link" :to="{ path: '/Login' }" v-show="!isLoggedIn">
         <div class="buttons">
           <a class="button is-light">
             <strong>Login</strong>
           </a>
         </div>
       </b-navbar-item>
-      <b-navbar-item class="no-bg" tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item class="no-bg" @click.prevent="logout" v-show="isLoggedIn">
         <div class="buttons">
           <a class="button is-light">
             <strong>Logout</strong>
@@ -44,7 +44,18 @@
 </template>
 
 <script>
-export default {
+import { mapGetters, mapActions } from 'vuex'
 
+export default {
+  computed: {
+    ...mapGetters('auth', [
+      'isLoggedIn'
+    ])
+  },
+  methods: {
+    ...mapActions('auth', [
+      'logout'
+    ])
+  }
 }
 </script>

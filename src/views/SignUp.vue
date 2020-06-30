@@ -3,6 +3,17 @@
     <section class="hero is-fullheight-with-navbar has-text-centered">
       <div class="hero-body">
         <div class="container">
+          <b-message
+            class="my-sub-margin"
+            :active="registerError"
+            type="is-danger"
+            has-icon
+            size="is-small"
+          >
+            <p
+              class="is-size-6"
+            >An error has occurred, please do not give up. Try again later&nbsp;🥺.</p>
+          </b-message>
           <div class="columns">
             <div class="column is-4"></div>
             <div class="column is-4">
@@ -19,7 +30,8 @@
                       type="text"
                       placeholder="Name"
                       maxlength="30"
-                      v-model="registerUsername"
+                      :value="registerUsername"
+                      @input="setRegisterUsername"
                     ></b-input>
                   </b-field>
                   <b-field>
@@ -27,7 +39,8 @@
                       maxlength="30"
                       type="email"
                       placeholder="Email"
-                      v-model="registerEmail"
+                      :value="registerEmail"
+                      @input="setRegisterEmail"
                     ></b-input>
                   </b-field>
                   <b-field>
@@ -35,12 +48,14 @@
                       type="password"
                       placeholder="Password"
                       maxlength="24"
-                      v-model="registerPassword"
+                      :value="registerPassword"
+                      @input="setRegisterPassword"
+                      password-reveal
                     ></b-input>
                   </b-field>
                   <b-button
                     type="is-primary"
-                    v-on:click.prevent="createAccount"
+                    @click.prevent="register"
                     icon-right="plus-circle-outline"
                     outlined
                   >Create</b-button>
@@ -56,7 +71,27 @@
 </template>
 
 <script>
-export default {
+import { mapState, mapMutations, mapActions } from 'vuex'
 
+export default {
+  computed: {
+    ...mapState('auth', [
+      'registerEmail',
+      'registerPassword',
+      'registerUsername',
+      'registerError'
+    ])
+  },
+  methods: {
+    ...mapMutations('auth', [
+      'setRegisterEmail',
+      'setRegisterPassword',
+      'setRegisterUsername',
+      'setRegisterError'
+    ]),
+    ...mapActions('auth', [
+      'register'
+    ])
+  }
 }
 </script>
