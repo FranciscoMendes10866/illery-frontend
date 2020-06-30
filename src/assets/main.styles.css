@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
+
+/**
+* Global - CSS
+**/
+
+* {
+  font-family: "Roboto Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/**
+* Footer - CSS
+**/
+
+.my-footer-pad {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.my-footer-margin {
+  margin-top: 5px !important;
+}
+
+/**
+* Index - CSS
+**/
+
+.my-pad-features {
+  padding: 80px !important;
+}
+
+.my-pad-hero {
+  padding: 70px !important;
+}
+
+.my-cards {
+  border-radius: 6px !important;
+}
+
+.my-images {
+  padding: 40px;
+}
+
+.my-card-buttons {
+  margin-top: 30px !important;
+}
+
+.my-margin {
+  margin-top: 50px !important;
+}
+
+.my-padding {
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
+
+.my-level {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+.my-sub-margin {
+  margin-top: 20px !important;
+}
+
+.no-bg {
+  background-color: transparent !important;
+}
+
+.no-bg:hover {
+  background-color: transparent !important;
+}
+
+/**
+* SignUp && Login - CSS
+**/
+
+.no-gap {
+  gap: none !important;
+}
