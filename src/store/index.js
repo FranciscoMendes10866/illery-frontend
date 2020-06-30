@@ -11,7 +11,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   strict: true,
   state: {
-    baseURL: process.env.API_URL
+    baseURL: 'http://localhost:3333/api/v1'
   },
   modules: {
     auth,
