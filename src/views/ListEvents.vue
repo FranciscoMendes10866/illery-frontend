@@ -40,7 +40,7 @@
                     {{ !props.open ? 'Know more' : 'It\'s enough' }}
                   </a>
                   <div class="columns">
-                    <div class="column is-6 content">
+                    <div class="column content">
                       <p>
                         <strong>Phone:</strong>
                         &nbsp;{{ event.phone }}
@@ -55,7 +55,7 @@
                       </p>
                       <p>{{ event.content }}</p>
                     </div>
-                    <div class="column is-6">
+                    <div class="column">
                       <figure class="image is-fullwidth">
                         <img :src="event.picture" alt="Event image" />
                       </figure>
