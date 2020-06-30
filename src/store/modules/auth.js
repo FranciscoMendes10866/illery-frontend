@@ -36,7 +36,7 @@ export default {
         password: state.loginPassword
       })
         .then(() => {
-          router.push('/listevents')
+          router.push('/')
           commit('setloggedIn', true)
         })
         .catch(() => {

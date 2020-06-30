@@ -17,6 +17,7 @@
                         class="has-text-danger"
                         icon-right="delete"
                         @click="deleteEvent(event)"
+                        v-show="isLoggedIn"
                       ></b-button>
                     </span>
                   </h3>
@@ -71,7 +72,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 
 export default {
   mounted () {
@@ -80,6 +81,9 @@ export default {
   computed: {
     ...mapState('places', [
       'eventList'
+    ]),
+    ...mapGetters('auth', [
+      'isLoggedIn'
     ])
   },
   methods: {
