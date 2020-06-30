@@ -3,9 +3,9 @@
     <section class="section">
       <div class="container">
         <h1 class="has-text-centered">All Events are listed here</h1>
-        <div class="columns is-multiline my-margin is-variable is-">
+        <div class="columns is-multiline my-margin is-variable is-6">
           <div class="column is-6 my-sub-margin" v-for="event in eventList" :key="event.id">
-            <div class="box is-size-7">
+            <div class="box is-size-7 grow">
               <div class="media-content">
                 <div class="content">
                   <h3>

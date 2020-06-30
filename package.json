@@ -14,6 +14,7 @@
     "axios": "^0.19.2",
     "buefy": "^0.8.20",
     "core-js": "^3.6.5",
+    "dotenv": "^8.2.0",
     "register-service-worker": "^1.7.1",
     "vercel": "^19.1.1",
     "vue": "^2.6.11",

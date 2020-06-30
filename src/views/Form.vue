@@ -14,56 +14,91 @@
           <div class="columns my-sub-margin">
             <div class="column">
               <b-field>
-                <b-input type="text" placeholder="Event name"></b-input>
+                <b-input
+                  type="text"
+                  placeholder="Event name"
+                  :value="eventName"
+                  @input="setEventName"
+                ></b-input>
               </b-field>
               <b-field>
-                <b-input type="text" placeholder="Slogan"></b-input>
+                <b-input
+                  type="text"
+                  placeholder="Slogan"
+                  :value="eventSlogan"
+                  @input="setEventSlogan"
+                ></b-input>
               </b-field>
               <b-field>
-                <b-input type="text" placeholder="Location"></b-input>
+                <b-input
+                  type="text"
+                  placeholder="Location"
+                  :value="eventLocation"
+                  @input="setEventLocation"
+                ></b-input>
               </b-field>
               <b-field>
-                <b-input type="email" placeholder="Event email"></b-input>
+                <b-input
+                  type="email"
+                  placeholder="Event email"
+                  :value="eventEmail"
+                  @input="setEventEmail"
+                ></b-input>
               </b-field>
               <b-field>
-                <b-input type="number" placeholder="Phone"></b-input>
+                <b-input
+                  type="number"
+                  placeholder="Phone"
+                  :value="eventPhone"
+                  @input="setEventPhone"
+                ></b-input>
               </b-field>
             </div>
             <div class="column">
               <b-field>
-                <b-datetimepicker
-                  rounded
-                  placeholder="Select date"
-                  v-model="date"
-                  icon="calendar-today"
-                  :timepicker="{ enableSeconds, hourFormat: format }"
-                  horizontal-time-picker
-                ></b-datetimepicker>
+                <b-input
+                  type="text"
+                  placeholder="Date"
+                  :value="eventDate"
+                  @input="setEventDate"
+                ></b-input>
               </b-field>
               <b-field>
-                <b-input type="text" placeholder="Website"></b-input>
+                <b-input
+                  type="text"
+                  placeholder="Website"
+                  :value="eventWebsite"
+                  @input="setEventWebsite"
+                ></b-input>
               </b-field>
               <b-field>
-                <b-input type="textarea" placeholder="Body"></b-input>
+                <b-input
+                  type="textarea"
+                  placeholder="Body"
+                  :value="eventBody"
+                  @input="setEventBody"
+                ></b-input>
               </b-field>
             </div>
           </div>
           <div class="columns my-sub-margin">
             <div class="column">
               <div class="buttons">
-                <b-field class="file" style="margin-top: 10px !important;">
-                  <b-upload v-model="file" expanded>
-                    <a class="button is-info">
-                      <b-icon icon="cloud-upload-outline"></b-icon>
-                      <span>{{ file.name || "Upload image"}}</span>
+                <b-field class="file">
+                  <b-upload :value="eventFile" @input="setEventFile">
+                    <a class="button is-primary">
+                      <b-icon icon="upload"></b-icon>
+                      <span>Click to upload</span>
                     </a>
                   </b-upload>
+                  <span class="file-name" v-if="eventFile">{{ eventFile.name }}</span>
                 </b-field>
                 <b-button
                   style="margin-left: 40px !important;"
                   type="is-primary"
                   icon-right="send"
                   outlined
+                  @click.prevent="createEvent"
                 >Submit form</b-button>
               </div>
             </div>
@@ -75,11 +110,37 @@
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions } from 'vuex'
+
 export default {
-  data () {
-    return {
-      file: {}
-    }
+  computed: {
+    ...mapState('places', [
+      'eventName',
+      'eventEmail',
+      'eventLocation',
+      'eventPhone',
+      'eventFile',
+      'eventDate',
+      'eventWebsite',
+      'eventSlogan',
+      'eventBody'
+    ])
+  },
+  methods: {
+    ...mapMutations('places', [
+      'setEventName',
+      'setEventEmail',
+      'setEventLocation',
+      'setEventPhone',
+      'setEventFile',
+      'setEventDate',
+      'setEventWebsite',
+      'setEventSlogan',
+      'setEventBody'
+    ]),
+    ...mapActions('places', [
+      'createEvent'
+    ])
   }
 }
 </script>

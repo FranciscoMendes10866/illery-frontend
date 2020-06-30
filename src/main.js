@@ -2,6 +2,7 @@ import Vue from 'vue'
 import { sync } from 'vuex-router-sync'
 import Buefy from 'buefy'
 import VueLazyload from 'vue-lazyload'
+import dotenv from 'dotenv'
 
 import App from './App.vue'
 import './registerServiceWorker'
@@ -12,6 +13,7 @@ import 'buefy/dist/buefy.css'
 Vue.use(Buefy)
 Vue.use(VueLazyload)
 sync(store, router)
+dotenv.config()
 
 Vue.config.productionTip = false
 
