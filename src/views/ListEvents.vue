@@ -18,6 +18,7 @@
                         icon-right="delete"
                         @click="deleteEvent(event)"
                         v-show="isLoggedIn"
+                        v-if="event.authorId === userId"
                       ></b-button>
                     </span>
                   </h3>
@@ -83,7 +84,8 @@ export default {
       'eventList'
     ]),
     ...mapGetters('auth', [
-      'isLoggedIn'
+      'isLoggedIn',
+      'userId'
     ])
   },
   methods: {

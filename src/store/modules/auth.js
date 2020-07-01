@@ -56,6 +56,9 @@ export default {
     },
     userName (state) {
       return state.userData.name
+    },
+    userId (state) {
+      return state.userData.id
     }
   },
   mutations: {
