@@ -4,6 +4,7 @@ import router from '@/router/index'
 export default {
   namespaced: true,
   state: {
+    userData: {},
     // Sign up
     registerEmail: null,
     registerPassword: null,
@@ -35,9 +36,10 @@ export default {
         email: state.loginEmail,
         password: state.loginPassword
       })
-        .then(() => {
+        .then(({ data }) => {
           router.push('/')
           commit('setloggedIn', true)
+          commit('setUserData', data)
         })
         .catch(() => {
           commit('setLoginError')
@@ -51,9 +53,15 @@ export default {
   getters: {
     isLoggedIn (state) {
       return !!state.loggedIn
+    },
+    userName (state) {
+      return state.userData.name
     }
   },
   mutations: {
+    setUserData (state, userData) {
+      state.userData = userData
+    },
     setloggedIn (state, loggedIn) {
       state.loggedIn = loggedIn
     },

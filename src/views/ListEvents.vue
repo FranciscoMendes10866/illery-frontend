@@ -89,7 +89,8 @@ export default {
   methods: {
     ...mapMutations('places', [
       'setFetchEvents',
-      'setRemoveEvent'
+      'setRemoveEvent',
+      'setDeleteError'
     ]),
     ...mapActions('places', [
       'fetchEvents',

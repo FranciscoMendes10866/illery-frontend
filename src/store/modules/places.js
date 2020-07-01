@@ -26,10 +26,12 @@ export default {
         })
     },
     deleteEvent ({ commit }, event) {
-      return API().delete(`posts/${event.id}`)
-        .then(() => {
-          commit('setRemoveEvent', event)
-        })
+      if (event.authorId === this.state.auth.userData.id) {
+        return API().delete(`posts/${event.id}`)
+          .then(() => {
+            commit('setRemoveEvent', event)
+          })
+      }
     },
     createEvent ({ commit, state }) {
       return API().post('posts', {
