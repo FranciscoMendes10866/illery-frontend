@@ -43,7 +43,7 @@ export default {
         openClose: state.eventDate,
         website: state.eventWebsite,
         content: state.eventBody,
-        authorEmail: this.state.auth.loginEmail
+        authorEmail: this.state.auth.userData.email
       })
         .then(({ data }) => {
           commit('appendEvents', data)
