@@ -2,7 +2,8 @@
   <div>
     <section class="section">
       <div class="container">
-        <h1 class="has-text-centered">All Events are listed here</h1>
+        <h1 class="has-text-centered my-margin is-size-3 has-text-weight-bold">All Events</h1>
+        <p class="has-text-centered my-sub-margin is-size-6">All Multimedia events are listed here:</p>
         <div class="columns is-multiline my-margin is-variable is-6">
           <div class="column is-6 my-sub-margin" v-for="event in eventList" :key="event.id">
             <div class="box is-size-7 grow">
@@ -32,7 +33,7 @@
                   </p>
                   <p>
                     <strong>Date:</strong>
-                    &nbsp;{{ event.openClose }}
+                    &nbsp;{{ event.openClose | moment("dddd, MMMM Do YYYY, h:mm:ss a") }}
                   </p>
                 </div>
                 <b-collapse :open="false" position="is-bottom" aria-id="contentIdForA11y1">
