@@ -56,12 +56,12 @@
             </div>
             <div class="column">
               <b-field>
-                <b-input
-                  type="text"
-                  placeholder="Date"
+                <b-datetimepicker
                   :value="eventDate"
                   @input="setEventDate"
-                ></b-input>
+                  placeholder="Click to select..."
+                  horizontal-time-picker
+                ></b-datetimepicker>
               </b-field>
               <b-field>
                 <b-input
@@ -113,6 +113,11 @@
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
+  data () {
+    return {
+      datetime: new Date()
+    }
+  },
   computed: {
     ...mapState('places', [
       'eventName',

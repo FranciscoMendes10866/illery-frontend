@@ -34,17 +34,19 @@ export default {
       }
     },
     createEvent ({ commit, state }) {
-      return API().post('posts', {
-        name: state.eventName,
-        slogan: state.eventSlogan,
-        location: state.eventLocation,
-        eventEmail: state.eventEmail,
-        phone: state.eventPhone,
-        openClose: state.eventDate,
-        website: state.eventWebsite,
-        content: state.eventBody,
-        authorEmail: this.state.auth.userData.email
-      })
+      const formData = new FormData()
+      formData.append('picture', state.eventFile)
+      formData.append('name', state.eventName)
+      formData.append('slogan', state.eventSlogan)
+      formData.append('location', state.eventLocation)
+      formData.append('eventEmail', state.eventEmail)
+      formData.append('phone', state.eventPhone)
+      formData.append('openClose', state.eventDate)
+      formData.append('website', state.eventWebsite)
+      formData.append('content', state.eventBody)
+      formData.append('authorEmail', this.state.auth.userData.email)
+      return API().post('/posts', formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } })
         .then(({ data }) => {
           commit('appendEvents', data)
           commit('setEventName', null)
